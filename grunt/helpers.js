@@ -99,8 +99,8 @@ module.exports = function(grunt) {
             for (var j = 0; j < plugins.length; j++) {
                 try {
                     var bowerJson = require(path.join(pluginTypeDir, plugins[j], 'bower.json'));
-
-                    for (var key in bowerJson.dependencies) {
+                    // include any plugins listed in `pluginDependencies`
+                    for (var key in bowerJson.pluginDependencies) {
                         if (!_.contains(buildIncludes, key)) dependencies.push(key);
                     }
                 } catch(error) {
